@@ -3,10 +3,13 @@ package java_sub;
 public class ClimbStairs {
 
     public int climbStairs(int n) {
-        int a = 1, b = 1;
-        while (n-- > 0)
-            a = (b += a) - a;
-        return a;
+        int a = 1, b = 1, c = 2;
+        for (int i = 2; i <= n; i++) {
+            c = a + b;
+            a = b;
+            b = c;
+        }
+        return c;
     }
 
     public static void main(String[] args) {
