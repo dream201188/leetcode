@@ -1,0 +1,7 @@
+*.pyc
+.idea
+*.log
+*.class
+*.vscode
+*.out
+dws_agent.pid
