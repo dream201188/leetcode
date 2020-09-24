@@ -2,6 +2,6 @@
 .idea
 *.log
 *.class
-*.vscode
-*.out
-*.tmp_submit/
+.vscode
+out
+tmp_submit/
