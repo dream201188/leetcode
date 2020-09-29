@@ -4,6 +4,8 @@ import java.util.Arrays;
  * @lc app=leetcode.cn id=242 lang=java
  *
  * [242] 有效的字母异位词
+ * 将两个字符串转成字符数组然后排序，排序后比较两个数组是否完全一样；
+ * 注意的是用Arrays.equals比较字符数组的值
  */
 
 // @lc code=start
