@@ -1,4 +1,4 @@
-package java_sub;
+package java_sub.sort;
 
 public class HeapSort {
 
@@ -34,24 +34,5 @@ public class HeapSort {
             heapify(arr, n, largest);
         }
 
-    }
-
-    /* A utility function to print array of size n */
-    static void printArray(int arr[]) {
-        int n = arr.length;
-        for (int i = 0; i < n; ++i)
-            System.out.print(arr[i] + " ");
-        System.out.println();
-    }
-
-    // Driver program
-    public static void main(String args[]) {
-        int arr[] = { 3, 12, 11, 13, 8, 5, 6, 14, 7 };
-
-        HeapSort ob = new HeapSort();
-        ob.sort(arr);
-
-        System.out.println("Sorted array is");
-        printArray(arr);
     }
 }
