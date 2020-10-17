@@ -28,13 +28,9 @@ class Solution(object):
             if not root:
                 return 0
 
-            max_path = 0
-            if root.left:
-                max_path = max(max_path, dfs(root.left))
-
-            if root.right:
-                max_path = max(max_path, dfs(root.right))
-            return max_path + 1
+            left_depth = dfs(root.left)
+            right_depth = dfs(root.right)
+            return max(left_depth, right_depth) + 1
 
         return dfs(root)
 
