@@ -65,64 +65,6 @@ class Solution:
                     L = L + 1
         return res
 
-    """
-    再刷一遍确实有收获
-    """
-
-    def threeSum(self, nums):
-        """
-        :type nums: List[int]
-        :rtype: List[List[int]]
-        """
-        if not nums or len(nums) < 3:
-            return []
-        length = len(nums)
-        res = []
-        nums.sort()
-        for i in range(0, length - 2):
-            if nums[i] > 0:
-                break
-            if i > 0 and nums[i] == nums[i - 1]:
-                continue
-            j, k = i + 1, length - 1
-            while j < k:
-                """
-                坑：[-2, 0, 0, 2, 2]
-                1. 挨着的相同，那么需要跳过去，continue 跳出while 没用啊，后面还在继续走；
-                2. while 光判断出来了，j k没有自己控制增长，相当于死循环了
-                """
-                # flag = False
-                # while j < k and j > i + 1 and nums[j] == nums[j - 1]:
-                #     j += 1
-                #     flag = True
-                # if flag:
-                #     continue
-                # while j < k < length - 1 and nums[k] == nums[k + 1]:
-                #     k -= 1
-                #     flag = True
-                # if flag:
-                #     continue
-
-                cur = nums[i] + nums[j] + nums[k]
-                if cur == 0:
-                    res.append([nums[i], nums[j], nums[k]])
-                    """
-                    这两个循环相当于上面的两个，比上面简单点，上面是一进来就检查是不是和最近经历的相同，相同就跳过
-                    这两个循环是只有在已经找到答案的情况下判断是不是跟未来的下一个相同，从而去自增自减
-                    """
-                    while j < k and nums[j] == nums[j + 1]:
-                        j += 1
-                    while j < k and nums[k] == nums[k - 1]:
-                        k -= 1
-
-                    k -= 1
-                    j += 1
-                elif cur > 0:
-                    k -= 1
-                else:
-                    j += 1
-        return res
-
 
 if __name__ == '__main__':
     s = Solution()
