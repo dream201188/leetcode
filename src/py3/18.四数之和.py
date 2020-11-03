@@ -149,3 +149,64 @@ class Solution(object):
                         j += 1
         return res
 
+
+    """
+    第二天自己再刷一遍
+    """
+    def fourSum(self, nums, target):
+        if not nums or len(nums) < 4:
+            return []
+        length = len(nums)
+        res = []
+        nums.sort()
+        for i in range(0, length - 3):
+            if i > 0 and nums[i] == nums[i - 1]:
+                continue
+            # 从630ms 提速到 120ms
+            if nums[i] + nums[i + 1] + nums[i + 2] + nums[i + 3] > target:
+                break
+            if nums[i] + nums[length - 1] + nums[length - 2] + nums[length - 3] < target:
+                continue  # 是跳过这次的 还有别的可以选
+            for h in range(i + 1, length - 2):
+                if h > i + 1 and nums[h] == nums[h - 1]:
+                    continue
+                j, k = h + 1, length - 1
+
+                # 从 120ms 提速到 60ms；固定前两个选最小值
+                if nums[i] + nums[h] + nums[j] + nums[j + 1] > target:
+                    break
+                if nums[i] + nums[h] + nums[k] + nums[k - 1] < target:
+                    continue  # 是跳过这次的 还有别的可以选；固定前两个选最可能最大值
+
+                while j < k:
+                    """
+                    确实比下面的耗时要长
+                    """
+                    # flag = False
+                    # while j < k and j > h + 1 and nums[j] == nums[j - 1]:
+                    #     j += 1
+                    #     flag = True
+                    # if flag:
+                    #     continue
+                    # while j < k < length - 1 and nums[k] == nums[k + 1]:
+                    #     k -= 1
+                    #     flag = True
+                    # if flag:
+                    #     continue
+
+                    cur = nums[i] + nums[j] + nums[k] + nums[h]
+                    if cur == target:
+                        res.append([nums[i], nums[j], nums[k], nums[h]])
+                        while j < k and nums[j] == nums[j + 1]:
+                            j += 1
+                        while j < k and nums[k] == nums[k - 1]:
+                            k -= 1
+
+                        k -= 1
+                        j += 1
+                    elif cur > target:
+                        k -= 1
+                    else:
+                        j += 1
+        return res
+
