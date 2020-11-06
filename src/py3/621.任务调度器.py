@@ -25,11 +25,12 @@ class Solution(object):
                 res += 1
         # 比较tasks length
         res = res if res >= len(tasks) else len(tasks)
-        return res、
+        return res
 
     """
     用counter 实现
     """
+
     def leastInterval(self, tasks, n):
         """
         :type tasks: List[str]
@@ -47,9 +48,9 @@ class Solution(object):
         # for tmp in nums.items():
         #     if tmp[1] == max_count:
         #         res += 1
-        last_num = list(nums.values()).count(max_count) # 等价
+        last_num = list(nums.values()).count(max_count)  # 等价
         res += last_num
         # 比较tasks length
         # res = res if res >= len(tasks) else len(tasks)]
-        return max(res, len(tasks)) # 等价
+        return max(res, len(tasks))  # 等价
         return res
