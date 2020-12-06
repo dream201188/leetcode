@@ -1,14 +1,26 @@
-class TreeNode:
-    def __init__(self, x):
-        self.val = x
-        self.left = None
-        self.right = None
+#
+# @lc app=leetcode.cn id=101 lang=python3
+#
+# [101] 对称二叉树
+#
+
+# @lc code=start
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, x):
+#         self.val = x
+#         self.left = None
+#         self.right = None
+
+
 
 import collections
 
 
 class Solution:
     def isSymmetric(self, root: TreeNode) -> bool:
+        if not root:
+            return True
         queue = collections.deque([root])
         while queue:
             i, j = 0, len(queue) - 1
@@ -28,27 +40,18 @@ class Solution:
             for _ in range(len(queue)):
                 node = queue.popleft()
                 if node.left: queue.append(node.left)
-                if node.righ: queue.append(node.right)
+                if node.right: queue.append(node.right)
         return True
 
+class Solution:
+    def isSymmetric(self, root: TreeNode) -> bool:
+        def recur(L, R):
+            if not L and not R: return True
+            if not L or not R or L.val != R.val: return False
+            return recur(L.left, R.right) and recur(L.right, R.left)
 
-if __name__ == "__main__":
-    [1,2,2,3,4,4,3]
-    root11 = root = TreeNode(1)
-    root.left = TreeNode(2)
-    root.right = TreeNode(2)
-    tmp = root
-    root = root.left
-    root.left = TreeNode(3)
-    root.right = TreeNode(4)
-    root = tmp.right
-    root.left = TreeNode(4)
-    root.right = TreeNode(3)
-    s = Solution()
-    s.isSymmetric(root11)
+        return recur(root.left, root.right) if root else True
 
 
-
-
-
+# @lc code=end
 
